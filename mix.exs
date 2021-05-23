@@ -44,7 +44,25 @@ defmodule Tasks.MixProject do
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:endon, "~> 1.0"},
+      {:bcrypt_elixir, "~> 0.12"},
+      {:httpoison, "~> 1.6"},
+      {:poison, "~> 3.1.0"},
+      {:pdf_generator, ">=0.4.0"},
+      {:sneeze, "~> 1.1"},
+      {:bbmustache, github: "soranoba/bbmustache"},
+      {:calendar, "~> 0.17.0"},
+      {:timex, "~> 3.5"},
+      {:scrivener_ecto, "~> 2.6.0", override: true},
+      {:browser, "~> 0.1.0"},
+      {:number, "~> 0.5.6"},
+      {:bamboo, "~> 2.0.1"},
+      {:bamboo_smtp, "~> 4.0.0"},
+      {:xlsxir, "~> 1.6.4"},
+      {:csv, "~> 2.3"},
+      {:elixlsx, "~> 0.4.2"},
+      {:uuid, "~> 1.1"},
     ]
   end
 

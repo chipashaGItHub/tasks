@@ -10,6 +10,10 @@ use Mix.Config
 config :tasks,
   ecto_repos: [Tasks.Repo]
 
+#Endon configurations
+config :endon,
+       repo: Tasks.Repo
+
 # Configures the endpoint
 config :tasks, TasksWeb.Endpoint,
   url: [host: "localhost"],

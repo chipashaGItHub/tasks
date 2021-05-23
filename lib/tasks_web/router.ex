@@ -13,10 +13,16 @@ defmodule TasksWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", TasksWeb do
-    pipe_through :browser
+  pipeline :no_layout do
+    plug :put_layout, false
+  end
 
-    get "/", PageController, :index
+  scope "/", TasksWeb do
+    pipe_through [:browser, :no_layout]
+
+    get "/", RedirectController, :index
+    get "/login", LoginController, :index
+    get "/login/forgot_password", LoginController, :forgot_password
   end
 
   # Other scopes may use custom stacks.
