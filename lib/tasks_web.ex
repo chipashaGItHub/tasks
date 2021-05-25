@@ -17,6 +17,28 @@ defmodule TasksWeb do
   and import those modules here.
   """
 
+
+  def universal do
+    quote do
+      use Phoenix.Controller, namespace: TasksWeb
+
+    # schemas
+      alias Tasks.Database.Schema.Emails
+      alias Tasks.Database.Schema.AuditLogs
+      alias Tasks.Database.Schema.Role
+      alias Tasks.Database.Schema.User
+
+      #Ecto
+      alias Lafarge.Repo
+      alias Ecto.Multi
+      use Ecto.Schema
+      use Endon
+      #      use PipeTo.Override
+      import Ecto.Changeset
+      import Ecto.Query
+    end
+  end
+
   def controller do
     quote do
       use Phoenix.Controller, namespace: TasksWeb

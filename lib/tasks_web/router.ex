@@ -7,6 +7,8 @@ defmodule TasksWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug(TaskWeb.Plugs.SetUser)
+    plug(TaskWeb.Plugs.SessionTimeout, timeout_after_seconds: 3_600)
   end
 
   pipeline :api do

@@ -14,6 +14,18 @@ config :tasks,
 config :endon,
        repo: Tasks.Repo
 
+# email configs
+config :tasks, Tasks.Mailer,
+       adapter: Bamboo.SMTPAdapter,
+       server: "smtp.gmail.com", #smtp.office365.com
+       port: 587,
+       username: "mvulajohn360@gmail.com",
+       password: "mvula@360",
+       tls: :if_available, # can be `:always` or `:never`
+       allowed_tls_versions: [:tlsv1, :"tlsv1.1", :"tlsv1.2"],
+       ssl: false, # can be `true`
+       retries: 3
+
 # Configures the endpoint
 config :tasks, TasksWeb.Endpoint,
   url: [host: "localhost"],
