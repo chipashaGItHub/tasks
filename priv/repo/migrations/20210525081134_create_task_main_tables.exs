@@ -47,12 +47,11 @@ defmodule Tasks.Repo.Migrations.CreateTaskMainTables do
       add :message, :string
       add :status, :string, default: "PENDING"
       add :deleted_at, :naive_datetime
-      add :receipentMobileNumber, :string
+      add :email, :string
       add :responseCode, :integer
-      add :msg_count, :integer
+      add :email_count, :integer
       add :date_sent, :naive_datetime
       add :dataResponse, :string
-
 
       timestamps(inserted_at: :created_at, type: :utc_datetime)
     end

@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="pdf_generator" type="mix">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/_build/dev/lib/pdf_generator/ebin" />
+      <root url="file://$PROJECT_DIR$/_build/dev/lib/pdf_generator/ebin" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/deps/pdf_generator/lib" />
+      <root url="file://$PROJECT_DIR$/deps/pdf_generator/priv" />
+      <root url="file://$PROJECT_DIR$/deps/pdf_generator/lib" />
+      <root url="file://$PROJECT_DIR$/deps/pdf_generator/priv" />
+    </SOURCES>
+  </library>
+</component>

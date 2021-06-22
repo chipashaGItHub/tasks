@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="sneeze" type="mix">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/_build/dev/lib/sneeze/ebin" />
+      <root url="file://$PROJECT_DIR$/_build/dev/lib/sneeze/ebin" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/deps/sneeze/lib" />
+      <root url="file://$PROJECT_DIR$/deps/sneeze/lib" />
+    </SOURCES>
+  </library>
+</component>

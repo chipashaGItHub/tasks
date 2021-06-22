@@ -50,7 +50,7 @@
                 <div class="panel panel-body login-form">
                     <div class="text-center">
                         <div class="icon-object border-warning text-warning"><i class="icon-spinner11"></i></div>
-                        <h5 class="content-group">Password recovery <small class="display-block">We'll send you instructions in email</small></h5>
+                        <h5 class="content-group">Password recovery <small class="display-block">Recovery Email will be sent!</small></h5>
                     </div>
 
                     <div class="form-group has-feedback has-feedback-left">

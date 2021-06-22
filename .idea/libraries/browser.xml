@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="browser" type="mix">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/_build/dev/lib/browser/ebin" />
+      <root url="file://$PROJECT_DIR$/_build/dev/lib/browser/ebin" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/deps/browser/lib" />
+      <root url="file://$PROJECT_DIR$/deps/browser/lib" />
+    </SOURCES>
+  </library>
+</component>

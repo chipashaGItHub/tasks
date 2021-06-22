@@ -1,5 +1,5 @@
 defmodule Tasks.Database.Schema.User do
-  use Tasksweb, :universal
+  use TasksWeb, :universal
 
   @db_columns [:id, :username, :password, :status, :email, :status, :first_name, :last_name, :mobile,
     :deleted_at, :user_role, :failed_attempts, :blocked, :last_login_date, :auto_password]
@@ -22,7 +22,7 @@ defmodule Tasks.Database.Schema.User do
       field :failed_attempts, :integer,  default: 0
       field :blocked, :boolean
       field :last_login_date, :naive_datetime
-      field :auto_password, :boolean, default: true
+      field :auto_password, :boolean, default: false
 
 
       timestamps(inserted_at: :created_at, type: :utc_datetime)

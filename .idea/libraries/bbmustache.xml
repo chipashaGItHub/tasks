@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="bbmustache" type="mix">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/_build/dev/lib/bbmustache/ebin" />
+      <root url="file://$PROJECT_DIR$/_build/dev/lib/bbmustache/ebin" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/deps/bbmustache/src" />
+      <root url="file://$PROJECT_DIR$/deps/bbmustache/src" />
+    </SOURCES>
+  </library>
+</component>

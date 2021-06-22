@@ -22,14 +22,19 @@ defmodule TasksWeb do
     quote do
       use Phoenix.Controller, namespace: TasksWeb
 
+    #utility
+    alias Tasks.Service.System.Logs
+    alias Tasks.Utility
+    alias Tasks.Utility.Randomizer, as: Rand
+
     # schemas
       alias Tasks.Database.Schema.Emails
-      alias Tasks.Database.Schema.AuditLogs
+      alias Tasks.Database.Schema.Logs
       alias Tasks.Database.Schema.Role
       alias Tasks.Database.Schema.User
 
       #Ecto
-      alias Lafarge.Repo
+      alias Tasks.Repo
       alias Ecto.Multi
       use Ecto.Schema
       use Endon

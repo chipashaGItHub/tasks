@@ -1,7 +1,7 @@
 defmodule Tasks.Database.Schema.Role do
   use TasksWeb, :universal
 
-  @db_fields [:id, :user, :role]
+  @db_fields [:id, :user_id, :role]
   @doc """
     schema definition
   """
@@ -16,6 +16,5 @@ defmodule Tasks.Database.Schema.Role do
   def changeset(role, attrs) do
     role
     |> cast(attrs, @db_fields)
-    |> unique_constraint(:user)
   end
 end

@@ -5,14 +5,17 @@ defmodule TasksWeb.Router do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_flash
-    plug :protect_from_forgery
     plug :put_secure_browser_headers
-    plug(TaskWeb.Plugs.SetUser)
-    plug(TaskWeb.Plugs.SessionTimeout, timeout_after_seconds: 3_600)
+    plug(TasksWeb.Plugs.SetUser)
+    plug(TasksWeb.Plugs.SessionTimeout, timeout_after_seconds: 3_600)
   end
 
   pipeline :api do
     plug :accepts, ["json"]
+  end
+
+  pipeline :csrf do
+    plug :protect_from_forgery
   end
 
   pipeline :no_layout do
@@ -25,6 +28,17 @@ defmodule TasksWeb.Router do
     get "/", RedirectController, :index
     get "/login", LoginController, :index
     get "/login/forgot_password", LoginController, :forgot_password
+    post "/login/forgot_password", LoginController, :forgot_password
+
+    post "/login/authenticate", SessionController, :authenticate
+    get "/login/authenticate", SessionController, :authenticate
+  end
+
+  scope "/home", TasksWeb do
+    pipe_through [:browser, :csrf]
+
+    get "/", DashboardController, :index
+
   end
 
   # Other scopes may use custom stacks.

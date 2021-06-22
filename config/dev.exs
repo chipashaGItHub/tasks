@@ -2,7 +2,7 @@ use Mix.Config
 
 # Configure your database
 config :tasks, Tasks.Repo,
-  username: "root",
+  username: "sa",
   password: "Qwerty12",
   database: "tasks_dev",
   hostname: "localhost",
