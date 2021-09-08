@@ -17,7 +17,7 @@ config :tasks, Tasks.Repo,
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
 config :tasks, TasksWeb.Endpoint,
-  http: [port: 4500],
+  http: [port: 8080],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,

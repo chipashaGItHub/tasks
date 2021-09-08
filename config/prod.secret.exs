@@ -17,7 +17,7 @@ config :nrfa_elixir, NrfaElixir.Repo,
 
 config :nrfa_elixir, NrfaElixirWeb.Endpoint,
        http: [
-         port: String.to_integer(System.get_env("PORT") || "4500"),
+         port: String.to_integer(System.get_env("PORT") || "8080"),
          transport_options: [socket_opts: [:inet6]]
        ],
        secret_key_base: "uBR0SiguwV3nlZlkL8Ov8FvdZnSvduy1c9UQXCBfn4Lxy6kRAoqHMgPZOxwlyaW/"
