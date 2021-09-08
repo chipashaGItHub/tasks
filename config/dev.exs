@@ -5,7 +5,8 @@ config :tasks, Tasks.Repo,
   username: "sa",
   password: "Qwerty12",
   database: "tasks_dev",
-  hostname: "localhost",
+  hostname: "154.120.217.204",
+#  hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
