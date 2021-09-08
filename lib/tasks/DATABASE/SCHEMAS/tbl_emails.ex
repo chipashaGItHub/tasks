@@ -5,6 +5,7 @@ defmodule Tasks.Database.Schema.Emails do
     schema definition
   """
   @db_columns [:message, :status, :email, :deleted_at, :responseCode, :email_count, :dataResponse]
+  @timestamps_opts [autogenerate: {Tasks.Utility, :autogenerate, []}]
 
   schema "emails" do
     field :message, :string
@@ -16,7 +17,7 @@ defmodule Tasks.Database.Schema.Emails do
     field :date_sent, :naive_datetime
     field :dataResponse, :string
 
-    timestamps(inserted_at: :created_at, type: :utc_datetime)
+    timestamps(inserted_at: :created_at)
   end
 
 

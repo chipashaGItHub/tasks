@@ -46,7 +46,7 @@
         <div class="content-wrapper">
 
             <!-- form with validation -->
-            <form action="index.html" class="form-validate">
+            <form action="<%= Routes.login_path(@conn, :recover)%>" class="form-validate" method="POST">
                 <div class="panel panel-body login-form">
                     <div class="text-center">
                         <div class="icon-object border-warning text-warning"><i class="icon-spinner11"></i></div>

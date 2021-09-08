@@ -2,6 +2,7 @@ defmodule Tasks.Database.Schema.Logs do
   use TasksWeb, :universal
 
   @db_columns [:narration, :reference2, :username, :actionType, :description, :user_id, :reference]
+  @timestamps_opts [autogenerate: {Tasks.Utility, :autogenerate, []}]
 
   schema "logs" do
     field :narration, :string
@@ -10,10 +11,10 @@ defmodule Tasks.Database.Schema.Logs do
     field :ip_address, :string
     field :actionType, :string
     field :reference, :string
-    field :user_id, :string
+    field :user_id, :integer
     field :description, :string
 
-    timestamps(inserted_at: :created_at, type: :utc_datetime)
+    timestamps(inserted_at: :created_at)
   end
 
   def changeset(logs, attrs) do

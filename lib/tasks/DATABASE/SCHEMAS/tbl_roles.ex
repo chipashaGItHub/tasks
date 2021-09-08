@@ -2,6 +2,7 @@ defmodule Tasks.Database.Schema.Role do
   use TasksWeb, :universal
 
   @db_fields [:id, :user_id, :role]
+  @timestamps_opts [autogenerate: {Tasks.Utility, :autogenerate, []}]
   @doc """
     schema definition
   """
@@ -9,7 +10,7 @@ defmodule Tasks.Database.Schema.Role do
     field :user_id, :integer
     field :role, :string
 
-    timestamps(inserted_at: :created_at, type: :utc_datetime)
+    timestamps(inserted_at: :created_at)
   end
 
   @doc false

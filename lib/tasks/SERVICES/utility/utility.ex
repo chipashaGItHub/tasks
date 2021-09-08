@@ -7,4 +7,6 @@ defmodule Tasks.Utility do
   end
 
   def format_date(date), do: (if date == nil do "N/A"  else date |> Timex.to_datetime() |> Calendar.DateTime.shift_zone!("Africa/Cairo") |> Calendar.Strftime.strftime!("%d-%b-%Y %H:%M:%S") end)
+
+  def autogenerate, do: Timex.local() |> DateTime.truncate(:second) |> DateTime.to_naive()
 end

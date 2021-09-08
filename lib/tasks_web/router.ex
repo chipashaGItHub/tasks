@@ -29,7 +29,8 @@ defmodule TasksWeb.Router do
     get "/login", LoginController, :index
     get "/login/forgot_password", LoginController, :forgot_password
     post "/login/forgot_password", LoginController, :forgot_password
-
+    get "/login/forgot_password/recover", LoginController, :recover
+    post "/login/forgot_password/recover", LoginController, :recover
     post "/login/authenticate", SessionController, :authenticate
     get "/login/authenticate", SessionController, :authenticate
   end
@@ -38,6 +39,7 @@ defmodule TasksWeb.Router do
     pipe_through [:browser, :csrf]
 
     get "/", DashboardController, :index
+    get "/dashboard/logout", SessionController, :sign_out
 
   end
 

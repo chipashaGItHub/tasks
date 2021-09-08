@@ -3,6 +3,7 @@ defmodule Tasks.Database.Schema.User do
 
   @db_columns [:id, :username, :password, :status, :email, :status, :first_name, :last_name, :mobile,
     :deleted_at, :user_role, :failed_attempts, :blocked, :last_login_date, :auto_password]
+  @timestamps_opts [autogenerate: {Tasks.Utility, :autogenerate, []}]
 
   @doc """
     schema definition
@@ -25,7 +26,7 @@ defmodule Tasks.Database.Schema.User do
       field :auto_password, :boolean, default: false
 
 
-      timestamps(inserted_at: :created_at, type: :utc_datetime)
+      timestamps(inserted_at: :created_at)
     end
 
   def changeset(user, attrs) do

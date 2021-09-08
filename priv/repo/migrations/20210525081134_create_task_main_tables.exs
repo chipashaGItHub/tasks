@@ -62,6 +62,14 @@ defmodule Tasks.Repo.Migrations.CreateTaskMainTables do
 
       timestamps(inserted_at: :created_at, type: :utc_datetime)
     end
+    
+    create_if_not_exists table(:login) do
+      add :attempts, :integer
+      add :updated_by, :integer
+      add :date_updated, :date
+
+      timestamps(inserted_at: :created_at, type: :utc_datetime)
+    end
 
   end
 
@@ -71,5 +79,6 @@ defmodule Tasks.Repo.Migrations.CreateTaskMainTables do
     #    drop_if_exists table(:logs)
     #    drop_if_exists table(:emails)
     #    drop_if_exists table(:roles)
+    #    drop_if_exists table(:login)
   end
 end

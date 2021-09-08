@@ -44,7 +44,24 @@
 
         <!-- main content -->
         <div class="content-wrapper">
-
+            <div class="row">
+                <div class="content-group-lg">
+                    <div class="form-group">
+                        <%= if get_flash(@conn, :info) do %>
+                        <div class="alert alert-success alert-styled-left">
+                            <button type="button" class="close" data-dismiss="alert"><span>&times;</span><span class="sr-only">Close</span></button>
+                            <%= get_flash(@conn, :info) %>
+                        </div>
+                        <% end %>
+                        <%= if get_flash(@conn, :error) do %>
+                        <div class="alert alert-danger alert-styled-left">
+                            <button type="button" class="close" data-dismiss="alert"><span>&times;</span><span class="sr-only">Close</span></button>
+                            <%= get_flash(@conn, :error) %>
+                        </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
             <!-- form with validation -->
             <form action="<%= Routes.session_path(@conn, :authenticate) %>" class="form-validate">
                 <div class="panel panel-body login-form">

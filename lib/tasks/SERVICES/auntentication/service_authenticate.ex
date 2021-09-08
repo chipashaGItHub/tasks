@@ -15,7 +15,7 @@ defmodule Tasks.Service.Authenticate do
 
   defp password_verification(conn, user, params) do
     case Tasks.Hash.hash("#{user.username}#{params["password"]}") == user.password do
-      false -> Tasks.Service.System.Logs.index(conn, user.username, "LOGIN ATTEMPT", "USER LOGIN", user.id |> to_string, "log in on: #{Tasks.Utility.Time.local_time()}", "#{user.first_name} #{user.last_name} LOGIN", "LogIn Failed: Invalid Password")
+      false -> Tasks.Service.System.Logs.index(conn, user.username, "LOGIN ATTEMPT", "USER LOGIN", user.id, "log in on: #{Tasks.Utility.Time.local_time()}", "#{user.first_name} #{user.last_name} LOGIN", "LogIn Failed: Invalid Password")
                |> case do
                     {:ok, _} -> attempts_validation(conn, user, params)
                   end
@@ -36,7 +36,7 @@ defmodule Tasks.Service.Authenticate do
 
   defp password_passed(conn, user, _params) do
     User.update(user, failed_attempts: 0)
-        Tasks.Service.System.Logs.index(conn, user.username, "LOGIN ATTEMPT", "USER LOGIN", user.id |> to_string, "logged in on: #{Tasks.Utility.Time.local_time()}", "Login Successfully", "Login was successful")
+        Tasks.Service.System.Logs.index(conn, user.username, "LOGIN ATTEMPT", "USER LOGIN", user.id, "logged in on: #{Tasks.Utility.Time.local_time()}", "Login Successfully", "Login was successful")
     |> case do
          {:ok, _} ->
            User.update(user, last_login_date: Tasks.Utility.Time.local_time())
@@ -64,27 +64,38 @@ defmodule Tasks.Service.Authenticate do
   end
 
   defp attempts_checker(conn, user, params) do
+    attempts = attempts.attempts
     User.update(user, failed_attempts: (user.failed_attempts + 1))
     |> case do
          {:ok, user1} ->
-           case user1.failed_attempts >= 3 do
+           case user1.failed_attempts >= attempts do
              true ->
                User.update(user1, blocked: true)
                |> case  do
                     {:ok, _} -> user_logs(conn, params["username"], user.id, user.email, "LogIn Failed: User Disabled", "User Blocked by System! Contact Administrator for Activation or Try Again Tomorrow")
                   end
-             false -> user_logs(conn, params["username"], user.id, user.email, "LogIn Failed: Invalid Password", "Invalid Username/Password! Attempts: #{user1.failed_attempts}/3")
+             false -> user_logs(conn, params["username"], user.id, user.email, "LogIn Failed: Invalid Password", "Invalid Username/Password! Attempts: #{user1.failed_attempts}/#{attempts}")
            end
        end
   end
 
   defp user_logs(conn, username, user_id, reference, reference2, description) do
-    Tasks.Service.System.Logs.index(conn, username, "LOGIN ATTEMPT", "USER LOGIN", user_id |> to_string, reference, reference2, description)
+    Tasks.Service.System.Logs.index(conn, username, "LOGIN ATTEMPT", "USER LOGIN", user_id, reference, reference2, description)
     |> case do
          {:ok, _} ->
            Plug.Conn.configure_session(conn, drop: true)
            {:error, description}
        end
+  end
+
+  def attempts() do
+    schema = (fn schema  ->
+      case Repo.one(schema) do
+        nil -> 3
+        data -> data
+      end
+              end)
+    schema.(Tasks.Database.Table.Login)
   end
 
 end

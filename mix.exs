@@ -20,6 +20,7 @@ defmodule Tasks.MixProject do
   def application do
     [
       mod: {Tasks.Application, []},
+      include_executables_for: [:unix],
       extra_applications: [:logger, :runtime_tools]
     ]
   end

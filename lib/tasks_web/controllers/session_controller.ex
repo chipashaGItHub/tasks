@@ -3,6 +3,9 @@ defmodule TasksWeb.SessionController do
   use TasksWeb, :universal
 
   def authenticate(conn, params) do
+    message = (fn user ->
+      if user.last_login_date == nil do "Welcome #{user.first_name} #{user.last_name}" else "Welcome Back #{user.first_name} #{user.last_name}, you last logged in on the #{user.last_login_date |> Utility.format_date()}" end
+               end)
     Plug.Conn.configure_session(conn, drop: true)
     Tasks.Service.System.Logs.index(conn, params["username"], "#{params["username"]} LOG IN ATTEMPT", "LOG IN ATTEMPT", nil, "#{params["username"]} attempted login on date: #{Tasks.Utility.Time.local_time() |> to_string}", "0.0", "LOGIN BUTTON ATTEMPTED!")
     case Tasks.Service.Authenticate.authenticate_user(conn, params) do
@@ -12,7 +15,7 @@ defmodule TasksWeb.SessionController do
         |> redirect(to: Routes.login_path(conn, :index))
       {:ok, user} ->
         conn
-        |> put_flash(:info, "Welcome Back #{user.first_name} #{user.last_name}, you last logged in on the #{user.last_login_date |> Utility.format_date()}")
+        |> put_flash(:info, message.(user))
         |> put_session(:current_user, user.id)
         |> put_session(:session_timeout_at, session_timeout_at())
         |> redirect(to: Routes.dashboard_path(conn, :index))
@@ -26,7 +29,7 @@ defmodule TasksWeb.SessionController do
 
   def sign_out(conn, _params) do
     user = conn.assigns.user
-    Tasks.Service.System.Logs.index(conn, user.username, "#{user.username} LOG IN ATTEMPT", "LOG IN ATTEMPT", user.id, "#{user.username} has successfully logged out of the system on date: #{Tasks.Utility.Time.local_time() |> to_string}", "1.0", "LOG-OUT BUTTON ATTEMPTED!")
+    Tasks.Service.System.Logs.index(conn, user.username, "#{user.username} LOGOUT ATTEMPT", "LOGOUT ATTEMPT", user.id, "#{user.username} has successfully logged out of the system on date: #{Tasks.Utility.Time.local_time() |> to_string}", "1.0", "LOG-OUT BUTTON ATTEMPTED!")
     |> case do
          {:ok, _} ->
            conn
