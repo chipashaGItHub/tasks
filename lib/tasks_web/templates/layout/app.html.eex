@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Limitless - Responsive Web Application Kit by Eugene Kopyov</title>
+  <title>Tasks</title>
 
   <!-- Global stylesheets -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
@@ -32,7 +32,14 @@
   <script type="text/javascript" src="/assets/js/plugins/ui/moment/moment.min.js"></script>
   <script type="text/javascript" src="/assets/js/plugins/pickers/daterangepicker.js"></script>
   <script type="text/javascript" src="/assets/js/plugins/ui/nicescroll.min.js"></script>
-  <script type="text/javascript" src="/assets/js/plugins/visualization/echarts/echarts.js"></script>
+
+  <script type="text/javascript" src="/assets/js/plugins/tables/datatables/datatables.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/forms/selects/select2.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/tables/datatables/extensions/jszip/jszip.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/tables/datatables/extensions/pdfmake/pdfmake.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/tables/datatables/extensions/pdfmake/vfs_fonts.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/tables/datatables/extensions/buttons.min.js"></script>
+  <script type="text/javascript" src="/assets/js/pages/datatables_extension_buttons_html5.js"></script>
 
   <script type="text/javascript" src="/assets/js/core/app.js"></script>
   <script type="text/javascript" src="/assets/js/pages/dashboard.js"></script>
@@ -229,22 +236,22 @@
                 <!-- /main -->
 
                 <!-- Forms -->
-                <li class="navigation-header"><span>Forms</span> <i class="icon-menu" title="Forms"></i></li>
+                <li class="navigation-header"><span>Profile</span> <i class="icon-menu" title="Forms"></i></li>
                 <li>
-                  <a href="#"><i class="icon-insert-template"></i> <span>Form layouts</span></a>
+                  <a href="#"><i class="icon-users"></i> <span>User Management</span></a>
                   <ul>
-                    <li><a href="form_layout_vertical.html">Vertical form</a></li>
+                    <li><a href="<%= Routes.user_path(@conn, :redirect, "RwjudkggtZhrykQAgqHmpAfbArfjdlllhWD") %>">Users</a></li>
                     <li><a href="form_layout_horizontal.html">Horizontal form</a></li>
                   </ul>
                 </li>
                 <!-- /forms -->
 
                 <!-- Appearance -->
-                <li class="navigation-header"><span>Appearance</span> <i class="icon-menu" title="Appearance"></i></li>
+                <li class="navigation-header"><span>Recons</span> <i class="icon-menu" title="Appearance"></i></li>
                 <li>
-                  <a href="#"><i class="icon-spinner2 spinner"></i> <span>Animations</span></a>
+                  <a href="#"><i class="icon-cog"></i> <span>Audit Trail</span></a>
                   <ul>
-                    <li><a href="animations_css3.html">CSS3 animations</a></li>
+                    <li><a href="<%= Routes.audits_path(@conn, :redirect, "rcmnbFxnXpvuVqlwkwyhZftmnzwHsukbhtt")%>">Logs</a></li>
                     <li>
                       <a href="#">Velocity animations</a>
                       <ul>
@@ -294,7 +301,7 @@
 
   <div class="navbar-collapse collapse" id="footer">
     <div class="navbar-text">
-      &copy; 2015. <a href="#" class="navbar-link">Limitless Web App Kit</a> by <a href="http://themeforest.net/user/Kopyov" class="navbar-link" target="_blank">Eugene Kopyov</a>
+      &copy; <%= Timex.today.year %>. <a href="#" class="navbar-link">Tasks</a> by <a href="http://themeforest.net/user/Kopyov" class="navbar-link" target="_blank">Developers </a>
     </div>
 
     <div class="navbar-right">

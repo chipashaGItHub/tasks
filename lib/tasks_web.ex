@@ -25,6 +25,7 @@ defmodule TasksWeb do
     #utility
     alias Tasks.Service.System.Logs
     alias Tasks.Utility
+    alias Tasks.Util.Pages, as: Pages
     alias Tasks.Utility.Randomizer, as: Rand
 
     # schemas

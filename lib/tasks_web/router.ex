@@ -36,9 +36,13 @@ defmodule TasksWeb.Router do
   end
 
   scope "/home", TasksWeb do
-    pipe_through [:browser, :csrf]
+    pipe_through [:browser, :csrf, :api]
 
     get "/", DashboardController, :index
+
+    match :*, "/admin/profile/users/:view", UserController, :redirect
+    match :*, "/admin/recon/audits/:view", AuditsController, :redirect
+
     get "/dashboard/logout", SessionController, :sign_out
 
   end

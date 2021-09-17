@@ -21,7 +21,7 @@ defmodule Tasks.Utility.Randomizer do
 
     lists =
       cond do
-        type == :alpha -> alphabets <> String.downcase(alphabets) <> numbers
+        type == :alpha -> alphabets <> String.downcase(alphabets)
         type == :numeric -> numbers
         type == :upcase -> alphabets
         type == :downcase -> String.downcase(alphabets)
